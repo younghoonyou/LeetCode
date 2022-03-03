@@ -16,7 +16,7 @@ class Solution {
 public:
     void PostOrder(TreeNode *temp){
         if(temp == nullptr) return ;
-        TreeNode *node = temp->right;
+        TreeNode *node = temp->right;//just change order
         temp->right = temp->left;
         temp->left = node;
         PostOrder(temp->right);
