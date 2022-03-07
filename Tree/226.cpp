@@ -12,19 +12,32 @@ struct TreeNode {
     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  };
 
+// class Solution {
+// public:
+//     void PostOrder(TreeNode *temp){
+//         if(temp == nullptr) return ;
+//         TreeNode *node = temp->right;//just change order
+//         temp->right = temp->left;
+//         temp->left = node;
+//         PostOrder(temp->right);
+//         PostOrder(temp->left);
+//     }
+
+//     TreeNode* invertTree(TreeNode* root) {
+//         PostOrder(root);
+//         return root;
+//     }
+// };
+
 class Solution {
 public:
-    void PostOrder(TreeNode *temp){
-        if(temp == nullptr) return ;
-        TreeNode *node = temp->right;//just change order
-        temp->right = temp->left;
-        temp->left = node;
-        PostOrder(temp->right);
-        PostOrder(temp->left);
-    }
-
     TreeNode* invertTree(TreeNode* root) {
-        PostOrder(root);
+        if(!root) return NULL;
+        TreeNode *tmp = root->left;
+        root->left=root->right;
+        root->right=tmp;
+        invertTree(root->left);
+        invertTree(root->right);
         return root;
     }
 };
