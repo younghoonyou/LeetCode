@@ -35,7 +35,7 @@ public:
         }
         if(!water || q.empty()) return -1;
         int answer = BFS(size,grid);
-        return answer;
+        return answer - 1;
     }
 };
 
