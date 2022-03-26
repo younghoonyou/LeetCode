@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 using namespace std;
-class Solution {
+class Solution {//O(N*M)
 public:
     bool flag = false;
     void Search(int x,int y,int n,int N,int M,string word,string temp,vector<vector<char>>& board,vector<vector<bool> >& check){
@@ -35,5 +35,3 @@ public:
         return false;
     }
 };
-
-int main(){}
