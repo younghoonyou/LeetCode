@@ -7,26 +7,27 @@ using namespace std;
 
 class Solution {
 public:
-    bool iscycle(int id){
+    bool iscycle(vector<int> adj[],vector<int> &vis,int id){
         if(vis[id]==1)
             return true;
         if(vis[id]==0){
-            vis[id]=1;//방문처리 후
-            for(int i=0;i<cnt[id];++i){
-                if(iscycle(adj[id][i]))
+            vis[id]=1;
+            for(auto edge : adj[id]){
+                if(iscycle(adj,vis,edge))
                     return true;
             }
         }
-        vis[id] = 2;//완전히 표시
+        vis[id] = 2;
         return false;
     }
     bool canFinish(int n, vector<vector<int>>& pre) {
-        for(int i=0;i<pre.size();++i){
-            adj[pre[i][1]][cnt[pre[i][1]]] = pre[i][0];
-            cnt[pre[i][1]]++;
-        }
+        vector<int> adj[n];
+        for(auto edge : pre)
+            adj[edge[1]].push_back(edge[0]);
+        vector<int> vis(n,0);
+        
         for(int i=0;i<n;i++){
-            if(iscycle(i))//싸이클이냐?   한쌍,방문벡터,num
+            if(iscycle(adj,vis,i))
                 return false;
         }
         return true;
