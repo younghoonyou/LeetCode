@@ -11,21 +11,20 @@ struct TreeNode{
 };
 class Solution {
 public:
-    void search(TreeNode* root,vector<int>& temp){
+    void search(TreeNode* root,int& k,int& ans){
         if(!root) return ;
-        search(root->left,temp);
-        temp.push_back(root->val);
-        search(root->right,temp);
+        search(root->left,k,ans);
+        if(k == 0) ans = root->val;
+        k--;
+        search(root->right,k,ans);
     }
     
     int kthSmallest(TreeNode* root, int k) {
-        vector<int> answer;
-        search(root,answer);
-        return answer[k-1];
+        int ans;
+        k--;
+        search(root,k,ans);
+        return ans;
     }
 };
 
-int main(){
-    Solution s;
-    return 0;
-}
+int main(){}
