@@ -52,17 +52,12 @@ public:
             }
             tmp = s[i];
         }
-        while(!oper.empty()){
-            long b = num.top();
+        int ans = 0;
+        while(!num.empty()){
+            ans+=num.top();
             num.pop();
-            long a = num.top();
-            num.pop();
-            char ch = oper.top();
-            oper.pop();
-            long tmp = Cal(a,b,ch);
-            num.push(tmp);
         }
-        return num.top();
+        return ans;
     }
 };
 
