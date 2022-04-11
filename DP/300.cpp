@@ -20,6 +20,26 @@ public:
     }
 };//Longest Int Subsequence
 
+
+class Solution {
+public:
+    int lengthOfLIS(vector<int>& nums) {
+        int size = nums.size();
+        if(size == 1) return 1;
+        vector<int> sub;
+        for (int x : nums) {
+            if (sub.empty() || sub[sub.size() - 1] < x) {
+                sub.push_back(x);
+            } else {
+                int tmp = 0;
+                while(sub[tmp] < x) tmp++;
+                sub[tmp] = x;
+            }
+        }
+        return sub.size();
+    }
+};//Update with lower_bound
+
 int main(){
     
     return 0;
