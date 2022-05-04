@@ -8,20 +8,20 @@ struct ListNode {
     ListNode(int x, ListNode *next) : val(x), next(next) {}
 };
 
-class Solution {
+class Solution{//Using space complexity O(1)
 public:
-    bool hasCycle(ListNode *head) {//O(1) Linked_List
-        if(!head) return false;
-        if(!head->next) return false;
-        while(head->next !=nullptr){
-            if(head->val == 100001) return true;
-            head->val = 100001;
-            head = head->next;
+    bool hasCycle(ListNode *head){
+        if (!head || !head->next) return false;
+        ListNode *slow = head;
+        ListNode *fast = head;
+        while (fast && fast->next){
+            fast = fast->next->next;
+            slow = slow->next;
+            if (fast == slow) return true;
         }
         return false;
     }
-};//Change Data = check
-
+};
 
 int main(){
     return 0;
