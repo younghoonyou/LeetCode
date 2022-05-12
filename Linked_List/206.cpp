@@ -8,7 +8,22 @@ struct ListNode {
     ListNode(int x, ListNode *next) : val(x), next(next) {}
 };
 
-class Solution {
+class Solution{//O(N)
+public:
+    ListNode *reverseList(ListNode *head){
+        ListNode *prev;
+        prev = nullptr;
+        while (head){
+            ListNode *NextNode = head->next; // Just Temp
+            head->next = prev;
+            prev = head;
+            head = NextNode;
+        }
+        return prev;
+    }
+};
+
+class Solution {//Using recursion O(N) function call -> delay , memory
 public:
     ListNode* node = new ListNode();
     ListNode* reverseList(ListNode* head) {
