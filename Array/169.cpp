@@ -36,10 +36,10 @@ public:
 };
 
 class Solution{ // Because Majority is over than n/2 so it will only remain Majority
-public:
+public://find duplicate -> What is Majority?
     int majorityElement(vector<int> &nums){
         int cnt = 0, ans;
-        for (int x : nums){
+        for (int x : nums){//O(N)
             if (cnt == 0) ans = x;
             if (ans == x) cnt++;
             else cnt--;
