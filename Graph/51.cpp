@@ -38,7 +38,7 @@ public:
             }
         }
     }
-    vector<vector<string>> solveNQueens(int n){
+    vector<vector<string>> solveNQueens(int n){//Using Back Tracking
         N = n;
         Q = -1;
         string str = "";
