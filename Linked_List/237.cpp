@@ -8,10 +8,18 @@ struct ListNode{
     ListNode(int x, ListNode *next) : val(x), next(next) {}
 };
 
-class Solution{
+class Solution{//rereference
 public:
     void deleteNode(ListNode *node){
         *node = *(node->next);
+    }
+};
+
+class Solution{//non reference
+public:
+    void deleteNode(ListNode *node){
+        node->val = node->next->val;
+        node->next = node->next->next;
     }
 };
 
